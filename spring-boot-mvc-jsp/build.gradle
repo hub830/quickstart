@@ -1,0 +1,42 @@
+buildscript {
+	repositories {
+		maven { url 'http://192.168.30.207:8081/nexus/content/groups/public/' }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'war'
+apply plugin: 'spring-boot'
+	
+repositories {
+	maven { url 'http://192.168.30.207:8081/nexus/content/groups/public/' }
+}
+
+war {
+	baseName = 'demo'
+	version =  ''
+}
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+
+
+dependencies {
+	compile ("org.springframework.boot:spring-boot-starter-web") {
+		exclude group: 'org.apache.tomcat'
+		exclude group: 'org.apache.tomcat.embed'
+	}
+//	providedCompile "org.springframework.boot:spring-boot-starter-tomcat"
+//	providedCompile "org.apache.tomcat.embed:tomcat-embed-jasper"
+//	providedCompile 'javax.servlet:jsp-api:2.0'
+	providedCompile 'javax.servlet:servlet-api:3.0-alpha-1'
+	compile "javax.servlet:jstl"
+	compile "org.springframework.boot:spring-boot-starter-test"
+
+}	
