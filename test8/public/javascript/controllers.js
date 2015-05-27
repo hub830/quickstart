@@ -16,3 +16,9 @@ test8Controllers.controller('indexCtrl', ['$scope',
     ];
     $scope.orderProp = 'age';
   }]);
+
+
+test8Controllers.controller('NavbarCtrl', function ($scope, $location) {
+
+    $scope.orderProp = 'age';
+});

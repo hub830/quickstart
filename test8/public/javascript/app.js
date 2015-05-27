@@ -18,3 +18,13 @@ test8App.config(['$routeProvider',
         redirectTo: '/'
       });
   }]);
+
+test8App.run(function($rootScope) {
+  $rootScope.name = "Ari Lerner";
+  global = $rootScope.global = {
+  isAdmin: false,
+  isEditor: false,
+  isLogin: false,
+  info: {}
+  };
+});
