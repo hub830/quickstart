@@ -18,7 +18,42 @@ test8Controllers.controller('indexCtrl', ['$scope',
   }]);
 
 
-test8Controllers.controller('NavbarCtrl', function ($scope, $location) {
+test8Controllers.controller('NavbarCtrl', function ($scope, $modal, $log, $location) {
 
     $scope.orderProp = 'age';
+
+	$scope.login = function(size) {
+
+		var modalInstance = $modal.open({
+			templateUrl : 'partials/login.html',
+			controller : 'ModalInstanceCtrl',
+			size : size,
+			resolve : {
+				items : function() {
+					return $scope.items;
+				}
+			}
+		});
+
+		modalInstance.result.then(function(selectedItem) {
+			$scope.selected = selectedItem;
+		}, function() {
+			$log.info('Modal dismissed at: ' + new Date());
+		});
+	};
 });
+
+
+
+test8Controllers.controller('ModalInstanceCtrl', function($scope, $modalInstance, $window) {
+
+    $scope.submit = function(user){
+        console.log(user);
+//        console.log(password2);
+        console.log($scope.user);
+        console.log($scope.formLogin.email);
+        console.log($scope.formLogin.password);
+    }
+
+
+	});

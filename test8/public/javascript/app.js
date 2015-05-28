@@ -4,7 +4,9 @@
 
 var test8App = angular.module('test8App', [
   'ngRoute',
-  'test8Controllers'
+  'ui.bootstrap',
+  'test8Controllers',
+  'test8Services'
 ]);
 
 test8App.config(['$routeProvider',
@@ -21,7 +23,7 @@ test8App.config(['$routeProvider',
 
 test8App.run(function($rootScope) {
   $rootScope.name = "Ari Lerner";
-  global = $rootScope.global = {
+  var global = $rootScope.global = {
   isAdmin: false,
   isEditor: false,
   isLogin: false,

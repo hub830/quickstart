@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+      <script src="/bower_components/angular/angular.js"></script>
+<script>
+var myApp = angular.module("myApp", []);
+    myApp.controller("testCtrl", function($scope){
+        $scope.formData = {
+            name: '',
+            type: ''
+        }
+        $scope.submit = function(){
+            console.log($scope.frmTest);
+            console.log($scope.formData);
+        }
+    });
+</script>
+</head>
+ 
+<body>
+<div ng-app="myApp">
+  <div ng-controller="testCtrl">
+    <form name="frmTest">
+      <input type="text" ng-model="formData.name" name="name" />
+      <input type="text" ng-model="formData.type" name="type" />
+      <div ng-click="submit()" style="width:100px; height:100px; background:#000; margin:20px auto; cursor:pointer"></div>
+    </form>
+  </div>
+</div>
+</body>
+</html>
