@@ -45,14 +45,20 @@ test8Controllers.controller('NavbarCtrl', function ($scope, $modal, $log, $locat
 
 
 
-test8Controllers.controller('ModalInstanceCtrl', function($scope, $modalInstance, $window) {
+test8Controllers.controller('ModalInstanceCtrl', function($scope, $modalInstance, $window,User) {
 
     $scope.submit = function(user){
-        console.log(user);
+    	
+//        console.log(user);
+//        console.log(User);
 //        console.log(password2);
-        console.log($scope.user);
-        console.log($scope.formLogin.email);
-        console.log($scope.formLogin.password);
+//        console.log($scope.user);
+//        console.log($scope.formLogin.email);
+//        console.log($scope.formLogin.password);
+        
+        User.login($scope.user, function(data) {
+            console.log(data);
+        });
     }
 
 
