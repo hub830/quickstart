@@ -2,8 +2,8 @@
 
 /* App Module */
 
-angular.module('test8Services', ['ngResource']).
-factory('User', function($resource){
+//angular.module('test8Services', ['ngResource'])
+test8Services.factory('User', function($resource){
 	
 /*  return $resource('phones/:phoneId.json', {}, {
 	  query: {method:'GET', params:{phoneId:'phones'},
@@ -11,8 +11,8 @@ factory('User', function($resource){
   });*/
   
 
-  var user = $resource('/users' , { } , {
-    login : { method : 'post'}
+  var user = $resource('/users/signup' , { } , {
+    signin : { method : 'post'}
   });
 
   return user;

@@ -9,6 +9,9 @@ var test8App = angular.module('test8App', [
   'test8Services'
 ]);
 
+
+var test8Services = angular.module('test8Services', ['ngResource']);
+
 test8App.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
