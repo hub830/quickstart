@@ -19,6 +19,10 @@ test8App.config(['$routeProvider',
         templateUrl: 'partials/index.html',
         controller: 'indexCtrl'
       }).
+      when('/signup', {
+          templateUrl: 'partials/signup.html',
+          controller: 'SignupCtrl'
+        }).
       otherwise({
         redirectTo: '/'
       });
