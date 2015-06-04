@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="myTest">
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+    <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css' />
+        <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/angular-messages/angular-messages.js"></script>
+
+        <style type="text/css">
+            body {
+                padding-top: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="col-md-6">
+            <form role="form" name="myForm" class="form-horizontal" novalidate>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        用户名
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" placeholder="ng-Messages测试" name="name" ng-model="username.name"
+                               ng-minlength=3 ng-maxlength=20 required />
+                        <hr/>
+                        $error：{{myForm.name.$error}}
+                        <hr/>
+                        <div ng-messages="myForm.name.$error">
+                            <div ng-message="required">必填项</div>
+                            <div ng-message="minlength">字符太短小于3</div>
+                            <div ng-message="maxlength">字符太长大于20</div>
+                        </div> 
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
+<script type="text/javascript">
+     angular.module("myTest", ['ngMessages']);
+</script>

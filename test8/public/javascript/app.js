@@ -4,6 +4,7 @@
 
 var test8App = angular.module('test8App', [
   'ngRoute',
+  'ngMessages',
   'ui.bootstrap',
   'test8Controllers',
   'test8Services'

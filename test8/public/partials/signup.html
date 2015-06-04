@@ -1,7 +1,17 @@
 signup
     <div class="account-wall">
-      <form class="form-signin" ng-submit="submit(formLogin)"  name="signup-form" novalidate=”novalidate”>
-        <input type="text" name="email" class="form-control" placeholder="Email" required autofocus ng-model="user.email">
+      <form class="form-signin" ng-submit="submit(form.$valid)"  name="form" novalidate=”novalidate”>
+      
+        <input type="text" name="email" class="form-control" placeholder="Email" required autofocus ng-model="user.email" ng-minlength=3 ng-maxlength=20 required/>
+        
+        <span class="error" ng-show="form.$dirty && form.email.$invalid">填写格式错误</span>
+        
+        <div ng-messages="form.email.$error" ng-messages-multiple
+        ng-messages-include ="@Url.Content("partials/error.html")">
+        </div> 
+        
+        
+        
         <br/>
         <input type="password" name="password" class="form-control" placeholder="Password" required ng-model="user.password">
         <br/>
