@@ -59,6 +59,7 @@ test8Controllers.controller('SignupCtrl', function($scope,$http, $window,User) {
     $scope.submit = function(user){
         console.log("11111111111111111111111111111111111111111111111111111111");
         console.log(user);
+        console.log($scope.form);
         console.log($scope.user);
         /*User.signin($scope.user,$scope.user, function(data) {
             console.log(data);

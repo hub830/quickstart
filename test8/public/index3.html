@@ -26,6 +26,10 @@
                         <hr/>
                         $error：{{myForm.name.$error}}
                         <hr/>
+                          <div ng-messages="myForm.name.$error" ng-messages-multiple
+        ng-messages-include ="@Url.Content("~/Content/template/error.html")">
+   </div> 
+                        
                         <div ng-messages="myForm.name.$error">
                             <div ng-message="required">必填项</div>
                             <div ng-message="minlength">字符太短小于3</div>

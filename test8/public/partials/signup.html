@@ -3,13 +3,24 @@ signup
       <form class="form-signin" ng-submit="submit(form.$valid)"  name="form" novalidate=”novalidate”>
       
         <input type="text" name="email" class="form-control" placeholder="Email" required autofocus ng-model="user.email" ng-minlength=3 ng-maxlength=20 required/>
-        
-        <span class="error" ng-show="form.$dirty && form.email.$invalid">填写格式错误</span>
-        
-        <div ng-messages="form.email.$error" ng-messages-multiple
-        ng-messages-include ="@Url.Content("partials/error.html")">
-        </div> 
-        
+
+        <div ng-messages="form.email.$dirty &&form.email.$error">
+          <div ng-messages-include="partials/error.html"></div>
+        </div>
+        <hr/>
+        $error：{{form.email.$error}}
+        <hr/>
+
+
+    
+        <input type="text" name="email2" class="form-control" placeholder="Email2" required autofocus ng-model="user.email2" ng-minlength=3 ng-maxlength=20 required/>
+
+        <div ng-messages="form.email2.$dirty &&form.email2.$error">
+          <div ng-messages-include="partials/error.html"></div>
+        </div>
+        <hr/>
+        $error：{{form.email2.$error}}
+        <hr/>
         
         
         <br/>
