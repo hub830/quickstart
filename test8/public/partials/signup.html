@@ -2,32 +2,37 @@ signup
     <div class="account-wall">
       <form class="form-signin" ng-submit="submit(form.$valid)"  name="form" novalidate=”novalidate”>
       
-        <input type="text" name="email" class="form-control" placeholder="Email" required autofocus ng-model="user.email" ng-minlength=3 ng-maxlength=20 required/>
+        <input  type="text"
+                name="name"
+                class="form-control"
+                placeholder="Name"
+                autofocus
+                ng-model="user.name"
+                ng-minlength=3
+                ng-maxlength=20
+                ng-remote-validate="/users/signup/validname" 
+                required/>
 
+        <div ng-messages="form.name.$dirty &&form.name.$error">
+          <div ng-message="ngRemoteValidate">必填项</div>
+          <div ng-messages-include="partials/error.html"></div>
+        </div>
+        $error:{{form.name.$error}}<br/>
+        $dirty:{{form.name.$dirty}} <br/>
+        $valid:{{form.name.$valid}}<br/>
+        $invalid:{{form.name.$invalid}}
+        
+        
+        <br/>
+        <input type="text" name="email" class="form-control" placeholder="Email" required autofocus ng-model="user.email" ng-minlength=3 ng-maxlength=20 required/>
         <div ng-messages="form.email.$dirty &&form.email.$error">
           <div ng-messages-include="partials/error.html"></div>
         </div>
-        <hr/>
-        $error：{{form.email.$error}}
-        <hr/>
-
-
-    
-        <input type="text" name="email2" class="form-control" placeholder="Email2" required autofocus ng-model="user.email2" ng-minlength=3 ng-maxlength=20 required/>
-
-        <div ng-messages="form.email2.$dirty &&form.email2.$error">
-          <div ng-messages-include="partials/error.html"></div>
-        </div>
-        <hr/>
-        $error：{{form.email2.$error}}
-        <hr/>
-        
-        
         <br/>
         <input type="password" name="password" class="form-control" placeholder="Password" required ng-model="user.password">
         <br/>
         <input type="password" name="password2" class="form-control" placeholder="Password" required >
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"  ng-disabled="form.$invalid || form.$pending" >Sign up</button>
         <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
       </form>
     </div>

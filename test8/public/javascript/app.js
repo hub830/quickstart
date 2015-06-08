@@ -5,6 +5,7 @@
 var test8App = angular.module('test8App', [
   'ngRoute',
   'ngMessages',
+  'remoteValidation',
   'ui.bootstrap',
   'test8Controllers',
   'test8Services'

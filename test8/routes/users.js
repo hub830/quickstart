@@ -73,6 +73,26 @@ router.post('/signup', function(req, res, next) {
 
 });
 
+
+router.post('/signup/validname', function(req, res, next) {
+
+    console.log(req.body.value);
+    console.log(req.body.value.startWith("abc"));
+    console.log("signup/validname");
+
+
+    if(req.body.value.startWith("abc"))
+        return res.json(200, {
+            isValid: false,
+            value: 'myPassword!'
+        });
+    else
+        return res.json(200, {
+            isValid: true,
+            value: 'myPassword!'
+        });    
+});
+
 router.post('/signout', function(req, res, next) {
     // console.log(req);
     console.log('postttttttttttttttttttttttttttttttttttttttt');
