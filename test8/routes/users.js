@@ -77,11 +77,11 @@ router.post('/signup', function(req, res, next) {
 router.post('/signup/validname', function(req, res, next) {
 
     console.log(req.body.value);
-    console.log(req.body.value.startWith("abc"));
+    console.log(req.body.value.indexOf("abc"));
     console.log("signup/validname");
 
 
-    if(req.body.value.startWith("abc"))
+    if(req.body.value.indexOf("abc")>-1)
         return res.json(200, {
             isValid: false,
             value: 'myPassword!'

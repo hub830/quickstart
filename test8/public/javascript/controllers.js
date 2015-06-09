@@ -20,7 +20,6 @@ test8Controllers.controller('indexCtrl', ['$scope',
 
 test8Controllers.controller('NavbarCtrl', function ($scope, $modal, $log, $location) {
 
-    $scope.orderProp = 'age';
 
 	$scope.login = function(size) {
 
@@ -57,12 +56,11 @@ test8Controllers.controller('ModalInstanceCtrl', function($scope, $modalInstance
 
 test8Controllers.controller('SignupCtrl', function($scope,$http, $window,User) {
     $scope.submit = function(user){
-        console.log("11111111111111111111111111111111111111111111111111111111");
         console.log(user);
         console.log($scope.form);
         console.log($scope.user);
-        /*User.signin($scope.user,$scope.user, function(data) {
+        User.signin($scope.user,$scope.user, function(data) {
             console.log(data);
-        });*/
+        });
     }
 });
