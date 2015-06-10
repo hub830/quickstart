@@ -59,7 +59,13 @@ test8Controllers.controller('SignupCtrl', function($scope,$http, $window,User) {
         console.log(user);
         console.log($scope.form);
         console.log($scope.user);
-        User.signin($scope.user,$scope.user, function(data) {
+        User.signin($scope.user,$scope.user, 
+        function(data) {
+            console.log("suc");
+            console.log(data);
+        },
+        function(data) {
+            console.log("err");
             console.log(data);
         });
     }
