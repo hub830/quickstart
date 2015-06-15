@@ -48,16 +48,22 @@ router.post('/signup', function(req, res, next) {
 
     console.log("signup");
 
-
-    req.checkBody('postparam', 'Invalid postparam').notEmpty().isInt();
+    console.log("4-----------------------------------------------");
+    req.assert('name').notEmpty();
+    console.log("5-----------------------------------------------");
+    req.checkBody('name', 'Invalid postparam').notEmpty().isInt();
     
 
+    console.log("1-----------------------------------------------");
     var errors = req.validationErrors();
     if (errors) {
-        res.json(500, errors);
+        console.log("3-----------------------------------------------");
+        console.log(errors);
+        res.json(400, errors);
         return;
     }
-    
+
+    console.log("2-----------------------------------------------");
     var userEntry = new db.userModel();
     userEntry.email = req.body.email;
     userEntry.password = req.body.password;

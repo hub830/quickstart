@@ -11,7 +11,7 @@ signup
           ng-pattern="/^[a-zA-Z\u4e00-\u9fa5]+[a-zA-Z0-9\u4e00-\u9fa5]*$/"
           ng-minlength=3
           ng-maxlength=20
-          ng-remote-validate="/users/signup/validname" 
+          ng-remote-validate="/users/signup/validname"
           required/>
         <div ng-messages="form.name.$dirty && form.name.$error" class="help-block">
           <div ng-message="required">请输入你的呢称</div>
@@ -19,6 +19,7 @@ signup
           <div ng-message="pattern">请输入非数字开头的字母数字汉字的组合</div>
           <div ng-messages-include="partials/error.html"></div>
         </div>
+        {{form.name.$error}}:
       </div>
       <div class="form-group" ng-class="{ 'has-error' : form.email.$invalid && !form.email.$pristine }">
         <input type="text"
@@ -27,23 +28,23 @@ signup
           placeholder="邮箱"
           required
           ng-model="user.email"
-          ng-pattern="/^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/"
+          ng-pattern="/^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+){1,63}.[a-z0-9]+$/"
           ng-remote-validate="/users/signup/validname"/>
-          
+
         <div ng-messages="form.email.$dirty &&form.email.$error" class="help-block">
           <div ng-message="required">请输入你的邮箱地址</div>
           <div ng-message="pattern">请输入正确的邮箱地址</div>
           <div ng-messages-include="partials/error.html"></div>
         </div>
       </div>
-        
+
       <div class="form-group" ng-class="{ 'has-error' : form.password.$invalid && !form.password.$pristine }">
         <input type="password"
         id="password"
-        name="password" 
-        class="form-control" 
-        placeholder="密码" 
-        required 
+        name="password"
+        class="form-control"
+        placeholder="密码"
+        required
         ng-minlength=6
         ng-maxlength=20
         ng-model="user.password">
@@ -53,11 +54,11 @@ signup
         </div>
       </div>
       <div class="form-group" ng-class="{ 'has-error' : form.password2.$invalid && !form.password2.$pristine }">
-        <input type="password" 
-        name="password2" 
-        class="form-control" 
-        placeholder="确认密码" 
-        required 
+        <input type="password"
+        name="password2"
+        class="form-control"
+        placeholder="确认密码"
+        required
         compare-to="user.password"
         ng-model="user.password2">
         <div ng-messages="form.password2.$dirty && form.password2.$error" class="help-block">
@@ -66,10 +67,10 @@ signup
           <div ng-messages-include="partials/error.html"></div>
         </div>
       </div>
-        
-        
+
+
         <button class="btn btn-lg btn-primary btn-block" type="submit"  ng-disabled="form.$invalid || form.$pending" >注册</button>
-        
+
         <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
       </form>
     </div>
