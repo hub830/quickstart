@@ -59,20 +59,18 @@ test8Controllers.controller('SignupCtrl', function($scope,$http, $window,User) {
         var form = $scope.form;
         User.signin($scope.user,$scope.user,
         function(data) {
-            console.log("suc");
             console.log(data);
         },
         function(error) {
-            console.log("err");
             var data = error.data;
             console.log(data);
             // Convert server side errors to AngularJS errors.
             var errors = {};
             for(var i = 0; i < data.length; i++) {
                 var err = data[i];
-                var key = [err['param']];
-                console.log(err);
-                form[key].$error.required = true;
+                var key = err['param'];
+                var msg = err['msg'];
+                form[key].$error[msg] = true;
                 form[key].$invalid = true;
                 form[key].$pristine = false;
             }

@@ -46,24 +46,19 @@ router.post('/signin', function(req, res, next) {
 
 router.post('/signup', function(req, res, next) {
 
-    console.log("signup");
+      console.log("signup");
 
-    console.log("4-----------------------------------------------");
-    req.assert('name').notEmpty();
-    console.log("5-----------------------------------------------");
-    req.checkBody('name', 'Invalid postparam').notEmpty().isInt();
-    
+    req.checkBody('name', 'required').notEmpty();
+    req.checkBody('email', 'pattern').notEmpty().isEmail();
+    req.checkBody('password', 'required').notEmpty();
 
-    console.log("1-----------------------------------------------");
     var errors = req.validationErrors();
+    console.log(errors);
     if (errors) {
-        console.log("3-----------------------------------------------");
-        console.log(errors);
         res.json(400, errors);
         return;
     }
 
-    console.log("2-----------------------------------------------");
     var userEntry = new db.userModel();
     userEntry.email = req.body.email;
     userEntry.password = req.body.password;
@@ -73,7 +68,9 @@ router.post('/signup', function(req, res, next) {
     }).exec();
     promise.then(function(result) {
         if (result)
-            return res.send(400);
+        {
+            return res.json(400, [{param: "name", msg: "ngRemoteValidate"}]);
+        }
 
         userEntry.save(function(err) {
             if (err) {
@@ -106,7 +103,7 @@ router.post('/signup/validname', function(req, res, next) {
         return res.json(200, {
             isValid: true,
             value: 'myPassword!'
-        });    
+        });
 });
 
 router.post('/signout', function(req, res, next) {
