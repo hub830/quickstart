@@ -4,7 +4,7 @@ var mongodbURL = 'mongodb://192.168.11.12/blog';
 var mongodbOptions = { };
 
 mongoose.connect(mongodbURL, mongodbOptions, function (err, res) {
-    if (err) { 
+    if (err) {
         console.log('Connection refused to ' + mongodbURL);
         console.log(err);
     } else {
@@ -16,6 +16,7 @@ var Schema = mongoose.Schema;
 
 // User schema
 var User = new Schema({
+    name: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true }
 });

@@ -28,11 +28,12 @@ signup
           required
           ng-model="user.email"
           ng-pattern="/^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+){1,63}.[a-z0-9]+$/"
-          ng-remote-validate="/users/signup/validname"/>
+          ng-remote-validate="/users/signup/validemail"/>
 
         <div ng-messages="form.email.$dirty &&form.email.$error" class="help-block">
           <div ng-message="required">请输入你的邮箱地址</div>
           <div ng-message="pattern">请输入正确的邮箱地址</div>
+          <div ng-message="ngRemoteValidate">你的邮箱已存在</div>
           <div ng-messages-include="partials/error.html"></div>
         </div>
       </div>
