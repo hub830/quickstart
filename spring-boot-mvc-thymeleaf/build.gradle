@@ -1,0 +1,55 @@
+buildscript {
+	repositories {
+		maven { url 'http://192.168.30.207:8081/nexus/content/groups/public/' }
+//        mavenLocal()
+//        mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE")
+	}
+}
+
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'spring-boot'
+apply plugin: 'war'
+
+	
+repositories {
+	maven { url 'http://192.168.30.207:8081/nexus/content/groups/public/' }
+}
+
+ext.env = System.getProperty("env")?:"dev"
+
+sourceSets {
+	main {
+		resources {
+			srcDirs = ["src/main/resources/public","src/main/resources/$env"]  
+		}
+	}
+}	
+
+war {
+	baseName = 'test'
+	version =  ''
+}
+ext.springBootVersion = '1.2.1.RELEASE'
+	
+
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf:$springBootVersion")
+	compile("org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion")
+	providedCompile("org.springframework.boot:spring-boot-starter-tomcat:$springBootVersion")
+	compile("org.hibernate:hibernate-validator:4.1.0.Final")
+	compile "org.apache.shiro:shiro-core:1.2.3"
+	compile "org.apache.shiro:shiro-spring:1.2.3"
+	compile "org.apache.shiro:shiro-web:1.2.3"
+//	runtime "com.mysql:myjdbc:5.1.6"
+ 	runtime "com.oracle:ojdbc6:6"
+	compile "commons-codec:commons-codec:1.9"
+	compile "org.codehaus.janino:janino:2.7.7"
+}
+

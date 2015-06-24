@@ -1,0 +1,10 @@
+spring.thymeleaf.cache= false
+spring.thymeleaf.prefix=classpath:/templates/flat/
+
+spring.datasource.url=jdbc:oracle:thin:@192.168.30.207:1521:vbillp2p
+spring.datasource.username=vbillp2p_agent
+spring.datasource.password=vbillp2p_agent
+spring.datasource.driverClassName=oracle.jdbc.driver.OracleDriver
+
+server.port=8080
+spring.jpa.generate-ddl=true
