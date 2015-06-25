@@ -43,6 +43,7 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-thymeleaf:$springBootVersion")
 	compile("org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion")
 	providedCompile("org.springframework.boot:spring-boot-starter-tomcat:$springBootVersion")
+	compile("org.springframework.boot:spring-boot-starter-test:$springBootVersion"){ exclude group: 'org.apache.tomcat'}
 	compile("org.hibernate:hibernate-validator:4.1.0.Final")
 	compile "org.apache.shiro:shiro-core:1.2.3"
 	compile "org.apache.shiro:shiro-spring:1.2.3"
@@ -51,5 +52,6 @@ dependencies {
  	runtime "com.oracle:ojdbc6:6"
 	compile "commons-codec:commons-codec:1.9"
 	compile "org.codehaus.janino:janino:2.7.7"
+	testCompile("junit:junit")
 }
 
